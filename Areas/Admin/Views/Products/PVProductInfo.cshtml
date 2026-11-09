@@ -1,0 +1,30 @@
+﻿@model HoangHaPCVN.Models.Product
+
+@{ 
+    //SP chưa có ảnh thì dùng ảnh mặc định
+    string anh = string.IsNullOrEmpty(Model.ProductImage)
+     ? "~/Content/images/default_img.png"
+     : Model.ProductImage;
+}
+
+<div class="row bg-light border rounded p-3 mb-3">
+    <div class="col-md-3">
+        <img src="@Url.Content(anh)" alt="@Model.ProductName" class="img-fluid"
+             style="max-height: 250px" />
+    </div>
+    <div class="col-md-9">
+        <dl class="row">
+            <dt class="col-sm-3">Tên sản phẩm</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.ProductName)</dd>
+
+            <dt class="col-sm-3">Mô tả</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.ProductDescription)</dd>
+
+            <dt class="col-sm-3">Đơn giá</dt>
+            <dd class="col-sm-9">@Model.ProductPrice.ToString("N0") đ</dd>
+
+            <dt class="col-sm-3">Danh mục</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Category.CategoryName)</dd>
+        </dl>
+    </div>
+</div>

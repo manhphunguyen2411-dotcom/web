@@ -1,0 +1,107 @@
+﻿@using HoangHaPCVN.Models.ViewModel
+
+@model HoangHaPCVN.Models.Order
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+}
+
+<h2 class="bg-success text-white p-2">CHI TIẾT ĐƠN HÀNG #@Model.OrderID</h2>
+
+@* Thông báo sau khi đổi trạng thái *@
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+<div class="row mb-3">
+    @* Thông tin đơn hàng *@
+    <div class="col-md-6">
+        <dl class="row bg-light border rounded p-3 h-100">
+            <dt class="col-sm-5">Ngày đặt</dt>
+            <dd class="col-sm-7">@Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</dd>
+
+            <dt class="col-sm-5">Hình thức giao hàng</dt>
+            <dd class="col-sm-7">@Model.DeliveryMethod</dd>
+
+            <dt class="col-sm-5">Phương thức thanh toán</dt>
+            <dd class="col-sm-7">@Model.PaymentMethod</dd>
+
+            <dt class="col-sm-5">Trạng thái thanh toán</dt>
+            <dd class="col-sm-7">@Model.PaymentStatus</dd>
+
+            <dt class="col-sm-5">Địa chỉ giao hàng</dt>
+            <dd class="col-sm-7">@Model.ShippingAddress</dd>
+        </dl>
+    </div>
+
+    @*Thông tin khách hàng*@
+    <div class="col-md-6">
+        <dl class="row bg-light border rounded p-3 h-100">
+            <dt class="col-sm-4">Khách hàng</dt>
+            <dd class="col-sm-8">
+                @Html.ActionLink(Model.Customer.CustomerName, "Details", "Customers", new { id = Model.CustomerID }, null)
+            </dd>
+
+            <dt class="col-sm-4">Số điện thoại</dt>
+            <dd class="col-sm-8">@Model.Customer.CustomerPhone</dd>
+
+            <dt class="col-sm-4">Email</dt>
+            <dd class="col-sm-8">@Model.Customer.CustomerEmail</dd>
+        </dl>
+    </div>
+</div>
+
+@* Các SP trong đơn *@
+<table class="table table-bordered align-middle">
+    <thead class="table-success">
+        <tr>
+            <th style="width: 100px">Hình ảnh</th>
+            <th>Sản phẩm</th>
+            <th style="width: 140px">Đơn giá</th>
+            <th style="width: 100px">Số lượng</th>
+            <th style="width: 160px">Thành tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model.OrderDetails)
+        {
+            string anh = string.IsNullOrEmpty(d.Product.ProductImage)
+                ? "~/Content/images/default_img.png"
+                : d.Product.ProductImage;
+
+            <tr>
+                <td><img src="@Url.Content(anh)" alt="@d.Product.ProductName" style="height: 60px; max-width: 80px; object-fit: contain" /></td>
+                <td>@d.Product.ProductName</td>
+                <td>@d.UnitPrice.ToString("N0") đ</td>
+                <td>@d.Quantity</td>
+                <td>@((d.Quantity * d.UnitPrice).ToString("N0")) đ</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="4" class="text-end">TỔNG TIỀN</th>
+            <th class="text-danger">@Model.TotalAmount.ToString("N0") đ</th>
+        </tr>
+    </tfoot>
+</table>
+
+@* Đổi trạng thái của đơn *@
+@using (Html.BeginForm("UpdateStatus", "Orders", new { id = Model.OrderID }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="row g-2 align-items-center mb-3">
+        <div class="col-auto"><strong>Trạng thái đơn:</strong></div>
+        <div class="col-md-4">
+            @Html.DropDownList("orderStatus",
+                new SelectList(OrderStatuses.All, Model.OrderStatus),
+                new { @class = "form-select" })
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Cập nhật trạng thái</button>
+        </div>
+    </div>
+}
+
+@Html.ActionLink("Quay lại danh sách đơn", "Index", null, new { @class = "btn btn-secondary" })

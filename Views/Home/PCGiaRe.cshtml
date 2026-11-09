@@ -1,0 +1,238 @@
+﻿@{
+    ViewBag.Title = "PC Giá Rẻ";
+}
+
+@section styles {
+    <link href="~/Content/category.css" rel="stylesheet" />
+}
+
+<div class="product-grid">
+
+    <!-- sản phẩm 1 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="~/Content/img/PCGR1.png" alt="PC 1">
+
+        </div>
+        <div class="product-info">
+            <div class="product-price">35.250.000 đ</div>
+            <div class="product-title">
+                HHPC ULTRA 5 250K PLUS | 32GB DDR5 | NVIDIA RTX 3050 6G
+            </div>
+        </div>
+        <div class="ps-foot">
+            <span class="ps-stock">Sẵn hàng</span>
+            <form action="/Home/ThemVaoGio" method="post">
+                <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                <input type="hidden" name="gia" value="3990000" />
+                <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                <button type="submit" class="ps-add">+</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- sản phẩm 2 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="~/Content/img/PCGR2.png" alt="PC 2">
+
+        </div>
+        <div class="product-info">
+            <div class="product-price">
+                22.450.000 đ
+            </div>
+            <div class="product-title">
+                HHPC CORE i5 14600KF | 16G | NVIDIA RTX 3050 6GB
+            </div>
+        </div>
+        <div class="ps-foot">
+            <span class="ps-stock">Sẵn hàng</span>
+            <form action="/Home/ThemVaoGio" method="post">
+                <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                <input type="hidden" name="gia" value="3990000" />
+                <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                <button type="submit" class="ps-add">+</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- sản phẩm 3 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="~/Content/img/PCGR3.png" alt="PC 3">
+        </div>
+        <div class="product-info">
+            <div class="product-price">
+                19.950.000 đ
+
+            </div>
+            <div class="product-title">
+                HHPC RYZEN 5 5500GT | 16G | NVIDIA RTX 3050 8GB
+            </div>
+        </div>
+        <div class="ps-foot">
+            <span class="ps-stock">Sẵn hàng</span>
+            <form action="/Home/ThemVaoGio" method="post">
+                <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                <input type="hidden" name="gia" value="3990000" />
+                <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                <button type="submit" class="ps-add">+</button>
+            </form>
+        </div>
+    </div>
+    <!-- sản phẩm 4 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="~/Content/img/PCGR4.png" alt="PC 4">
+
+        </div>
+        <div class="product-info">
+            <div class="product-price">19.250.000 đ</div>
+            <div class="product-title">
+                HHPC CORE i5 12400F | 16G | NVIDIA RTX 3050 8GB
+            </div>
+        </div>
+        <div class="ps-foot">
+            <span class="ps-stock">Sẵn hàng</span>
+            <form action="/Home/ThemVaoGio" method="post">
+                <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                <input type="hidden" name="gia" value="3990000" />
+                <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                <button type="submit" class="ps-add">+</button>
+            </form>
+        </div>
+    </div>
+    <!-- sản phẩm 5 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="~/Content/img/PCGR5.png" alt="PC 5">
+
+        </div>
+        <div class="product-info">
+            <div class="product-price">17.250.000 đ</div>
+            <div class="product-title">
+                HHPC CORE i5 12400F | 16G | NVIDIA RTX 3050 6G
+            </div>
+        </div>
+        <div class="ps-foot">
+            <span class="ps-stock">Sẵn hàng</span>
+            <form action="/Home/ThemVaoGio" method="post">
+                <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                <input type="hidden" name="gia" value="3990000" />
+                <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                <button type="submit" class="ps-add">+</button>
+            </form>
+        </div>
+    </div>
+    <!-- sản phẩm 6 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="~/Content/img/PCGR6.png" alt="PC 6">
+
+        </div>
+        <div class="product-info">
+            <div class="product-price">21.250.000 đ</div>
+            <div class="product-title">
+                HHPC CORE i5 14400F | 16G | NVIDIA RTX 3050 8GB
+            </div>
+        </div>
+        <div class="ps-foot">
+            <span class="ps-stock">Sẵn hàng</span>
+            <form action="/Home/ThemVaoGio" method="post">
+                <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                <input type="hidden" name="gia" value="3990000" />
+                <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                <button type="submit" class="ps-add">+</button>
+            </form>
+        </div>
+    </div>
+    <!-- sản phẩm 7 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="~/Content/img/PCGR7.png" alt="PC 7">
+
+        </div>
+        <div class="product-info">
+            <div class="product-price">15.250.000 đ</div>
+            <div class="product-title">
+                HHPC CORE i5 14400F | 16G | NVIDIA RTX 3050 6G
+            </div>
+        </div>
+        <div class="ps-foot">
+            <span class="ps-stock">Sẵn hàng</span>
+            <form action="/Home/ThemVaoGio" method="post">
+                <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                <input type="hidden" name="gia" value="3990000" />
+                <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                <button type="submit" class="ps-add">+</button>
+            </form>
+        </div>
+    </div>
+    <!-- sản phẩm 8 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="~/Content/img/PCGR8.png" alt="PC 8">
+
+        </div>
+        <div class="product-info">
+            <div class="product-price">23.250.000 đ</div>
+            <div class="product-title">
+                HHPC CORE i5 14400F | 16G | NVIDIA RTX 3060 12GB
+            </div>
+        </div>
+        <div class="ps-foot">
+            <span class="ps-stock">Sẵn hàng</span>
+            <form action="/Home/ThemVaoGio" method="post">
+                <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                <input type="hidden" name="gia" value="3990000" />
+                <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                <button type="submit" class="ps-add">+</button>
+            </form>
+        </div>
+    </div>
+    <!-- sản phẩm 9 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="~/Content/img/PCGR9.png" alt="PC 9">
+
+        </div>
+        <div class="product-info">
+            <div class="product-price">25.250.000 đ</div>
+            <div class="product-title">
+                HHPC RYZEN 5 7500F | 16GB DDR5 | NVIDIA RTX 3060 12GB
+            </div>
+        </div>
+        <div class="ps-foot">
+            <span class="ps-stock">Sẵn hàng</span>
+            <form action="/Home/ThemVaoGio" method="post">
+                <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                <input type="hidden" name="gia" value="3990000" />
+                <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                <button type="submit" class="ps-add">+</button>
+            </form>
+        </div>
+    </div>
+    <!-- sản phẩm 10 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="~/Content/img/PCGR10.png" alt="PC 10">
+
+        </div>
+        <div class="product-info">
+            <div class="product-price">24.250.000 đ</div>
+            <div class="product-title">
+                HHPC CORE i5 14400F | 16G | NVIDIA RTX 5060 Ti 8G
+            </div>
+        </div>
+        <div class="ps-foot">
+            <span class="ps-stock">Sẵn hàng</span>
+            <form action="/Home/ThemVaoGio" method="post">
+                <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                <input type="hidden" name="gia" value="3990000" />
+                <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                <button type="submit" class="ps-add">+</button>
+            </form>
+        </div>
+    </div>
+
+</div>

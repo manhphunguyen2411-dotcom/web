@@ -1,0 +1,15 @@
+﻿@model HoangHaPCVN.Models.Category
+
+<div class="mb-3">
+    <label class="form-label fw-bold">Tên danh mục</label>
+    @Html.EditorFor(model => model.CategoryName,
+        new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.CategoryName, "",
+        new { @class = "text-danger" })
+</div>
+
+<div class="mb-3">
+    <input type="submit" value="Lưu" class="btn btn-primary" />
+    @Html.ActionLink("Quay lại danh sách", "Index", null,
+        new { @class = "btn btn-secondary" })
+</div>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1e6cb2a6d39e4a85a48518f50dd2b10f" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="HoangHaPCVNModel.Category" Width="1.5" PointX="1.375" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoangHaPCVNModel.Customer" Width="1.5" PointX="3.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoangHaPCVNModel.Order" Width="1.5" PointX="5.125" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoangHaPCVNModel.OrderDetail" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoangHaPCVNModel.Product" Width="1.5" PointX="3.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoangHaPCVNModel.sysdiagram" Width="1.5" PointX="8.625" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoangHaPCVNModel.User" Width="1.5" PointX="1.5" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="HoangHaPCVNModel.FK_Pro_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="HoangHaPCVNModel.FK__Order__CustomerI__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="HoangHaPCVNModel.FK_User_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="HoangHaPCVNModel.FK__OrderDeta__Order__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="HoangHaPCVNModel.FK__OrderDeta__Produ__571DF1D5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

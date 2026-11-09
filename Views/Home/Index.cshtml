@@ -1,0 +1,697 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+    var gioHang = Session["GioHang"] as List<HoangHaPCVN.Models.CartItem>;
+    int soLuongGio = gioHang == null ? 0 : gioHang.Sum(x => x.SoLuong);
+}
+
+@section styles {
+    <link href="~/Content/home.css" rel="stylesheet" />
+}
+
+<div>
+    <!-- phần body-->
+    <div class="main-container">
+
+        <!-- cột menu bên trái -->
+        <aside class="sidebar">
+            <ul>
+                <li>
+                    <a href="/Home/PCgiare">
+                        <span class="icon"><i class="fa-solid fa-desktop"></i></span> PC Giá Rẻ <span class="arrow">›</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/CPU">
+                        <span class="icon"><i class="fa-solid fa-microchip"></i></span> CPU - Bộ Vi Xử Lý <span class="arrow">›</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/VGA">
+                        <span class="icon"><i class="fa-solid fa-gamepad"></i></span> VGA - Card Màn Hình <span class="arrow">›</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/LinhKienMayTinh">
+                        <span class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></span> Linh Kiện Máy Tính <span class="arrow">›</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/MangHinhMayTinh">
+                        <span class="icon"><i class="fa-solid fa-tv"></i></span> Màn Hình Máy Tính <span class="arrow">›</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/TangNhietCooling">
+                        <span class="icon"><i class="fa-solid fa-fan"></i></span> Tản Nhiệt Cooling <span class="arrow">›</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/GamingGear">
+                        <span class="icon"><i class="fa-solid fa-computer-mouse"></i></span> Gaming Gear <span class="arrow">›</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/ThietBiMang">
+                        <span class="icon"><i class="fa-solid fa-wifi"></i></span> Thiết Bị Mạng <span class="arrow">›</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+
+        <!-- ===== KHU VỰC BANNER CHÍNH ===== -->
+        <section class="banner-area">
+
+            <!-- Slider lớn -->
+            <div class="main-slider">
+                <a href="#" class="slide active"><img src="~/Content/img/HINHBUNHAT.png" alt="Chính sách bảo hành cả cháy nổ"></a>
+            </div>
+
+            <!-- 2 banner bên phải -->
+            <div class="right-banners">
+                <a href="#" class="banner-item"><img src="~/Content/img/BHTN.png" alt="Bảo hành tận nhà"></a>
+                <a href="#" class="banner-item"><img src="~/Content/img/VSMT.png" alt="Vệ sinh máy tính"></a>
+            </div>
+
+            <!-- 3 banner bên dưới -->
+            <a href="#" class="banner-item bottom-banner"><img src="~/Content/img/PCAI.png" alt="PC chuyên AI Training"></a>
+            <a href="#" class="banner-item bottom-banner"><img src="~/Content/img/PCTHIETKE.png" alt="PC thiết kế đồ họa 3D"></a>
+            <a href="#" class="banner-item bottom-banner"><img src="~/Content/img/PCEDIT.png" alt="PC edit video render"></a>
+
+        </section>
+
+    </div>
+
+
+    <!-- ================= CPU ================= -->
+    <section class="ps-section">
+        <div class="ps-head">
+            <a href="/Home/CPU" class="ps-title">CPU - Bộ Vi Xử Lý</a>
+
+        </div>
+        <div class="ps-grid">
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/CPU1.PNG" /></a>
+                <div class="ps-price">3.990.000 đ</div>
+                <a href="#" class="ps-name">Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/CPU2.PNG" /></a>
+                <div class="ps-price">9.490.000 đ</div>
+                <a href="#" class="ps-name">Intel Core i7-14700K (Up to 5.6GHz, 20 nhân 28 luồng)</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/CPU3.PNG" /></a>
+                <div class="ps-price">8.790.000 đ</div>
+                <a href="#" class="ps-name">Intel Core Ultra 7 265K (Up to 5.5GHz, 20 nhân 20 luồng)</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core Ultra 7 265K (Up to 5.5GHz, 20 nhân 20 luồng)" />
+                        <input type="hidden" name="gia" value="8790000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU3.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/CPU4.PNG" /></a>
+                <div class="ps-price">5.390.000 đ</div>
+                <a href="#" class="ps-name">AMD Ryzen 5 7600X (Up to 5.3GHz, 6 nhân 12 luồng)</a>
+                <div class="ps-foot">
+                    <span class="ps-stock"> Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="AMD Ryzen 5 7600X (Up to 5.3GHz, 6 nhân 12 luồng)" />
+                        <input type="hidden" name="gia" value="5390000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU4.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/CPU5.PNG" /></a>
+                <div class="ps-price">13.490.000 đ</div>
+                <a href="#" class="ps-name">AMD Ryzen 7 9800X3D (Up to 5.2GHz, 8 nhân 16 luồng)</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="AMD Ryzen 7 9800X3D (Up to 5.2GHz, 8 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="13490000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU5.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/CPU6.PNG" /></a>
+                <div class="ps-price">15.990.000 đ</div>
+                <a href="#" class="ps-name">AMD Ryzen 9 9950X (Up to 5.7GHz, 16 nhân 32 luồng)</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="AMD Ryzen 9 9950X (Up to 5.7GHz, 16 nhân 32 luồng)" />
+                        <input type="hidden" name="gia" value="15990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU6.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/CPU7.PNG" /></a>
+                <div class="ps-price">15.990.000 đ</div>
+                <a href="#" class="ps-name">AMD Ryzen 9 9950X (Up to 5.7GHz, 16 nhân 32 luồng)</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="AMD Ryzen 9 9950X (Up to 5.7GHz, 16 nhân 32 luồng)" />
+                        <input type="hidden" name="gia" value="15990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU7.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/CPU8.PNG" /></a>
+                <div class="ps-price">15.990.000 đ</div>
+                <a href="#" class="ps-name">AMD Ryzen 9 9950X (Up to 5.7GHz, 16 nhân 32 luồng)</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="AMD Ryzen 9 9950X (Up to 5.7GHz, 16 nhân 32 luồng)" />
+                        <input type="hidden" name="gia" value="15990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU8.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/CPU9.PNG" /></a>
+                <div class="ps-price">15.990.000 đ</div>
+                <a href="#" class="ps-name">AMD Ryzen 9 9950X (Up to 5.7GHz, 16 nhân 32 luồng)</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="AMD Ryzen 9 9950X (Up to 5.7GHz, 16 nhân 32 luồng)" />
+                        <input type="hidden" name="gia" value="15990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU9.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/CPU10.PNG" /></a>
+                <div class="ps-price">15.990.000 đ</div>
+                <a href="#" class="ps-name">AMD Ryzen 9 9950X (Up to 5.7GHz, 16 nhân 32 luồng)</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="AMD Ryzen 9 9950X (Up to 5.7GHz, 16 nhân 32 luồng)" />
+                        <input type="hidden" name="gia" value="15990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU10.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= VGA ================= -->
+    <section class="ps-section">
+        <div class="ps-head">
+            <a href="/Home/VGA" class="ps-title">VGA - Card Màn Hình</a>
+        </div>
+        <div class="ps-grid">
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/VGA11.PNG" /></a>
+                <div class="ps-price">7.990.000 đ</div>
+                <a href="#" class="ps-name">ASUS Dual GeForce RTX 4060 OC 8GB GDDR6</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/VGA2.PNG" /></a>
+                <div class="ps-price">12.290.000 đ</div>
+                <a href="#" class="ps-name">MSI GeForce RTX 5060 Ti Ventus 2X OC 16GB</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/VGA3.PNG" /></a>
+                <div class="ps-price">15.990.000 đ</div>
+                <a href="#" class="ps-name">Gigabyte GeForce RTX 5070 Windforce OC 12GB</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Gigabyte GeForce RTX 5070 Windforce OC 12GB" />
+                        <input type="hidden" name="gia" value="15990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/VGA3.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/VGA4.PNG" /></a>
+                <div class="ps-price">23.490.000 đ</div>
+                <a href="#" class="ps-name">ASUS TUF Gaming GeForce RTX 5070 Ti OC 16GB</a>
+                <div class="ps-foot">
+                    <span class="ps-stock"> Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="ASUS TUF Gaming GeForce RTX 5070 Ti OC 16GB" />
+                        <input type="hidden" name="gia" value="23490000" />
+                        <input type="hidden" name="hinh" value="/Content/img/VGA4.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/VGA5.PNG" /></a>
+                <div class="ps-price">33.990.000 đ</div>
+                <a href="#" class="ps-name">MSI GeForce RTX 5080 Gaming Trio OC 16GB</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="MSI GeForce RTX 5080 Gaming Trio OC 16GB" />
+                        <input type="hidden" name="gia" value="33990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/VGA5.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/VGA6.PNG" /></a>
+                <div class="ps-price">17.990.000 đ</div>
+                <a href="#" class="ps-name">Sapphire Pulse AMD Radeon RX 9070 XT 16GB</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Sapphire Pulse AMD Radeon RX 9070 XT 16GB" />
+                        <input type="hidden" name="gia" value="17990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/VGA6.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/VGA7.PNG" /></a>
+                <div class="ps-price">17.990.000 đ</div>
+                <a href="#" class="ps-name">Sapphire Pulse AMD Radeon RX 9070 XT 16GB</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/VGA8.PNG" /></a>
+                <div class="ps-price">17.990.000 đ</div>
+                <a href="#" class="ps-name">Sapphire Pulse AMD Radeon RX 9070 XT 16GB</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/VGA9.PNG" /></a>
+                <div class="ps-price">17.990.000 đ</div>
+                <a href="#" class="ps-name">Sapphire Pulse AMD Radeon RX 9070 XT 16GB</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/VGA10.PNG" /></a>
+                <div class="ps-price">17.990.000 đ</div>
+                <a href="#" class="ps-name">Sapphire Pulse AMD Radeon RX 9070 XT 16GB</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== BANNER PC VIDEO EDITING ===== -->
+    <section class="banner-section">
+        <a href="#" class="banner-big">
+            <img src="~/Content/img/HinhBu.png">
+        </a>
+    </section>
+    <!-- ================= LINH KIỆN MÁY TÍNH ================= -->
+    <section class="ps-section">
+        <div class="ps-head">
+            <a href="/Home/LinhKienMayTinh" class="ps-title">Linh Kiện Máy Tính</a>
+        </div>
+        <div class="ps-grid">
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/LKMT1.PNG" /></a>
+                <div class="ps-price">1.390.000 đ</div>
+                <a href="#" class="ps-name">RAM Kingston Fury Beast 16GB DDR5 5600MHz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/LKMT2.PNG" /></a>
+                <div class="ps-price">2.790.000 đ</div>
+                <a href="#" class="ps-name">RAM Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/LKMT3.PNG" /></a>
+                <div class="ps-price">3.290.000 đ</div>
+                <a href="#" class="ps-name">Mainboard ASUS PRIME B760M-A WIFI D4</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/LKMT4.PNG" /></a>
+                <div class="ps-price">5.290.000 đ</div>
+                <a href="#" class="ps-name">Mainboard MSI MAG B650 TOMAHAWK WIFI</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/LKMT5.PNG" /></a>
+                <div class="ps-price">2.890.000 đ</div>
+                <a href="#" class="ps-name">Nguồn Corsair RM850e 850W 80 Plus Gold</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/LKMT6.PNG" /></a>
+                <div class="ps-price">2.190.000 đ</div>
+                <a href="#" class="ps-name">Vỏ Case NZXT H5 Flow White</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/LKMT7.PNG" /></a>
+                <div class="ps-price">2.190.000 đ</div>
+                <a href="#" class="ps-name">Vỏ Case NZXT H5 Flow White</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/LKMT8.PNG" /></a>
+                <div class="ps-price">2.190.000 đ</div>
+                <a href="#" class="ps-name">Vỏ Case NZXT H5 Flow White</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/LKMT9.PNG" /></a>
+                <div class="ps-price">2.190.000 đ</div>
+                <a href="#" class="ps-name">Vỏ Case NZXT H5 Flow White</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/LKMT10.PNG" /></a>
+                <div class="ps-price">2.190.000 đ</div>
+                <a href="#" class="ps-name">Vỏ Case NZXT H5 Flow White</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= MÀN HÌNH MÁY TÍNH ================= -->
+    <section class="ps-section">
+        <div class="ps-head">
+            <a href="/Home/MangHinhMayTinh" class="ps-title">Màn Hình Máy Tính</a>
+        </div>
+        <div class="ps-grid">
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/MHMT1.PNG" /></a>
+                <div class="ps-price">2.990.000 đ</div>
+                <a href="#" class="ps-name">Màn hình LG UltraGear 24GS60F-B 24" IPS 180Hz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/MHMT2.PNG" /></a>
+                <div class="ps-price">2.990.000 đ</div>
+                <a href="#" class="ps-name">Màn hình LG UltraGear 24GS60F-B 24" IPS 180Hz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/MHMT3.PNG" /></a>
+                <div class="ps-price">2.990.000 đ</div>
+                <a href="#" class="ps-name">Màn hình LG UltraGear 24GS60F-B 24" IPS 180Hz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/MHMT4.PNG" /></a>
+                <div class="ps-price">2.990.000 đ</div>
+                <a href="#" class="ps-name">Màn hình LG UltraGear 24GS60F-B 24" IPS 180Hz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/MHMT5.PNG" /></a>
+                <div class="ps-price">2.990.000 đ</div>
+                <a href="#" class="ps-name">Màn hình LG UltraGear 24GS60F-B 24" IPS 180Hz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/MHMT6.PNG" /></a>
+                <div class="ps-price">2.990.000 đ</div>
+                <a href="#" class="ps-name">Màn hình LG UltraGear 24GS60F-B 24" IPS 180Hz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/MHMT7.PNG" /></a>
+                <div class="ps-price">2.990.000 đ</div>
+                <a href="#" class="ps-name">Màn hình LG UltraGear 24GS60F-B 24" IPS 180Hz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/MHMT8.PNG" /></a>
+                <div class="ps-price">2.990.000 đ</div>
+                <a href="#" class="ps-name">Màn hình LG UltraGear 24GS60F-B 24" IPS 180Hz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/MHMT9.PNG" /></a>
+                <div class="ps-price">2.990.000 đ</div>
+                <a href="#" class="ps-name">Màn hình LG UltraGear 24GS60F-B 24" IPS 180Hz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class="ps-card">
+                <a href="#" class="ps-thumb"><img src="~/Content/img/MHMT10.PNG" /></a>
+                <div class="ps-price">2.990.000 đ</div>
+                <a href="#" class="ps-name">Màn hình LG UltraGear 24GS60F-B 24" IPS 180Hz</a>
+                <div class="ps-foot">
+                    <span class="ps-stock">Sẵn hàng</span>
+                    <form action="/Home/ThemVaoGio" method="post">
+                        <input type="hidden" name="ten" value="Intel Core i5-14400F (Up to 4.7GHz, 10 nhân 16 luồng)" />
+                        <input type="hidden" name="gia" value="3990000" />
+                        <input type="hidden" name="hinh" value="/Content/img/CPU1.PNG" />
+                        <button type="submit" class="ps-add">+</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@* nút giỏ hàng nổi *@
+<a href="/Home/GioHang" class="cart-float">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span>@soLuongGio</span>
+</a>

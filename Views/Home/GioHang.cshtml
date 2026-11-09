@@ -1,0 +1,136 @@
+﻿@model List<HoangHaPCVN.Models.CartItem>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    var vn = new System.Globalization.CultureInfo("vi-VN");
+    long tongTien = Model.Sum(x => x.ThanhTien);
+    int tongSoLuong = Model.Sum(x => x.SoLuong);
+}
+
+@section styles {
+    <link href="~/Content/giohang.css" rel="stylesheet" />
+}
+
+<div class="cart-page">
+
+    <!-- ===== BREADCRUMB ===== -->
+    <div class="breadcrumb">
+        <a href="@Url.Action("Index", "Home")"><i class="fa-solid fa-house"></i>Trang chủ</a>
+        <span class="sep">»</span>
+        <span>Thông tin giỏ hàng</span>
+    </div>
+
+    <h1 class="cart-title">Giỏ hàng của tôi</h1>
+
+    <!-- ===== THÔNG BÁO TỪ SERVER ===== -->
+    @if (TempData["ThongBao"] != null)
+    {
+        <div class="cart-alert success"><i class="fa-solid fa-square-check"></i> @TempData["ThongBao"]</div>
+    }
+    @if (ViewBag.Loi != null)
+    {
+        <div class="cart-alert error"><i class="fa-solid fa-rectangle-xmark"></i> @ViewBag.Loi</div>
+    }
+
+    <div class="cart-layout">
+
+        <!-- ===== CỘT TRÁI ===== -->
+        <div class="cart-left">
+
+            <div class="cart-box cart-top">
+                <span>@tongSoLuong sản phẩm</span>
+                @if (Model.Count > 0)
+                {
+                    <form action="/Home/XoaHet" method="post">
+                        <button type="submit" class="btn-outline">
+                            LÀM TRỐNG GIỎ HÀNG
+                        </button>
+                    </form>
+                }
+            </div>
+
+            @if (Model.Count == 0)
+            {
+                <div class="cart-box cart-empty">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <p>Giỏ hàng của bạn đang trống</p>
+                    <a href="@Url.Action("Index", "Home")">Tiếp tục mua sắm</a>
+                </div>
+            }
+
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+
+                <div class="cart-box cart-item">
+                    <img src="@item.Hinh" alt="@item.Ten" />
+
+                    <div>
+                        <span class="ci-name">@item.Ten</span>
+                        <span class="ci-unit">Đơn giá: @item.Gia.ToString("N0", vn) đ</span>
+                    </div>
+
+                    <div class="ci-qty">
+                        <form action="/Home/GiamSoLuong" method="post">
+                            <input type="hidden" name="viTri" value="@i" />
+                            <button type="submit">−</button>
+                        </form>
+                        <span>@item.SoLuong</span>
+                        <form action="/Home/TangSoLuong" method="post">
+                            <input type="hidden" name="viTri" value="@i" />
+                            <button type="submit">+</button>
+                        </form>
+                    </div>
+
+                    <div class="ci-price">@item.ThanhTien.ToString("N0", vn) đ</div>
+
+                    <form action="/Home/XoaSanPham" method="post">
+                        <input type="hidden" name="viTri" value="@i" />
+                        <button type="submit" class="ci-del" title="Xóa sản phẩm">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </form>
+                </div>
+            }
+
+            <div class="cart-box cart-summary">
+                <h3>Thông tin đơn hàng</h3>
+                <div class="sum-row">
+                    <span>Tổng tiền</span>
+                    <b>@tongTien.ToString("N0", vn) đ</b>
+                </div>
+                <div class="sum-row sum-final">
+                    <span><i class="fa-regular fa-credit-card"></i>Tổng thanh toán</span>
+                    <b>@tongTien.ToString("N0", vn) đ</b>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CỘT PHẢI: THÔNG TIN NHẬN HÀNG ===== -->
+        <div class="cart-box cart-right">
+            <h3>Thông tin nhận hàng</h3>
+            <p class="note">
+                Để tiếp tục đặt hàng, quý khách xin vui lòng <a href="#">đăng nhập</a> hoặc nhập thông tin bên dưới.
+                Tư vấn viên sẽ liên hệ theo thông tin bạn cung cấp để xác nhận, không mua không sao.
+            </p>
+
+            <form name="frmDatHang" action="/Home/DatHang" method="post" class="cart-form">
+                <input type="text" name="hoTen" placeholder="Họ và tên" value="@ViewBag.HoTen" />
+                <input type="text" name="soDienThoai" placeholder="Số điện thoại" value="@ViewBag.SoDienThoai" />
+                <input type="text" name="email" placeholder="Nhập email" value="@ViewBag.Email" />
+                <input type="text" name="diaChi" placeholder="Địa chỉ nhận hàng" value="@ViewBag.DiaChi" />
+                <p class="hint"><i class="fa-solid fa-circle-info"></i>Nhập Số nhà, Đường, Phường/xã, Quận, Tỉnh</p>
+                <textarea name="ghiChu" placeholder="Ghi chú">@ViewBag.GhiChu</textarea>
+
+                @if (Model.Count > 0)
+                {
+                    <button type="submit" class="btn-order">ĐẶT HÀNG</button>
+                }
+                else
+                {
+                    <button type="button" class="btn-order" disabled>ĐẶT HÀNG</button>
+                }
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model HoangHaPCVN.Models.Category
+
+@{
+    ViewBag.Title = "Xóa danh mục";
+}
+
+<h2 class="bg-danger text-white p-2">XÓA DANH MỤC</h2>
+<h5>Bạn có chắc muốn xóa danh mục này?</h5>
+
+<dl class="row">
+    <dt class="col-sm-3">Tên danh mục</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.CategoryName)</dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <input type="submit" value="Xóa" class="btn btn-danger" />
+    @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary" })
+}

@@ -1,0 +1,87 @@
+﻿@using PagedList.Mvc
+
+@model HoangHaPCVN.Models.ViewModel.CustomerSearchVM
+
+@{
+    ViewBag.Title = "Khách hàng";
+}
+
+<h2 class="bg-success text-white p-2">QUẢN LÝ KHÁCH HÀNG</h2>
+
+@* Form tìm kiếm *@
+@using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+{
+    <div class="row g-2 align-items-center mb-3">
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.SearchTerm, new
+            {
+                @class = "form-control",
+                placeholder = "Nhập tên, số điện thoại, email hoặc tên đăng nhập",
+                maxlength = 100
+            })
+        </div>
+        @Html.HiddenFor(m => m.SortOrder)
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            @Html.ActionLink("Xóa lọc", "Index", null, new { @class = "btn btn-outline-secondary" })
+        </div>
+    </div>
+}
+
+@* Tùy chọn sắp xếp *@
+<div class="mb-3">
+    Sắp xếp theo:
+    @Html.ActionLink("Tên A → Z", "Index", new { sortOrder = "", searchTerm = Model.SearchTerm })
+    |
+    @Html.ActionLink("Tên Z → A", "Index", new { sortOrder = "name_desc", searchTerm = Model.SearchTerm })
+    |
+    @Html.ActionLink("Mua nhiều đơn nhất", "Index", new { sortOrder = "orders_desc", searchTerm = Model.SearchTerm })
+</div>
+
+@if (Model.Customers.Any())
+{
+    <table class="table table-bordered align-middle">
+        <thead class="table-success">
+            <tr>
+                <th>Họ và tên</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Tên đăng nhập</th>
+                <th style="width: 100px">Số đơn</th>
+                <th style="width: 200px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model.Customers)
+            {
+                <tr>
+                    <td>@c.CustomerName</td>
+                    <td>@c.CustomerPhone</td>
+                    <td>@c.CustomerEmail</td>
+                    <td>@c.Username</td>
+                    <td>@c.Orders.Count</td>
+                    <td>
+                        @Html.ActionLink("Chi tiết", "Details", new { id = c.CustomerID }, new { @class = "btn btn-info btn-sm" })
+                        @Html.ActionLink("Đơn hàng", "Index", "Orders", new { customerId = c.CustomerID }, new { @class = "btn btn-primary btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>
+        Trang @Model.Customers.PageNumber / @Model.Customers.PageCount
+        (tổng @Model.Customers.TotalItemCount khách hàng)
+    </p>
+
+    @Html.PagedListPager(Model.Customers, page => Url.Action("Index", new
+    {
+        page,
+        searchTerm = Model.SearchTerm,
+        sortOrder = Model.SortOrder
+    }))
+}
+else
+{
+    <p class="alert alert-warning">Không tìm được khách hàng nào phù hợp.</p>
+}

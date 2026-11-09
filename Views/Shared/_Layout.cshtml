@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Hoàng Hà PC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/Style.css">
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <!-- ===================== HEADER ===================== -->
+    <div class="header">
+        <div class="top-bar">
+            <div class="top-bar-inner">
+                <!-- Logo: bấm vào thì về trang chủ -->
+                <a href="@Url.Action("Index", "Home")" class="logo">
+                    <img src="~/Content/img/LogoHHPC.png" alt="Hoàng Hà PC">
+                </a>
+
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Nhập từ khóa tìm kiếm" maxlength="100" />
+                    <button id="search-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+
+                <div class="top-right">
+                    <!-- Hotline: bấm vào thì mở popup #hotline -->
+                    <a href="#hotline" class="top-item">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>Hotline<br />Mua Hàng</span>
+                    </a>
+
+                    <a href="#" class="top-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Hệ Thống<br />Showroom</span>
+                    </a>
+
+                    <a href="@Url.Action("GioHang", "Home")" class="top-item">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-number" id="cart-number">0</span>
+                        <span>Giỏ <br />Hàng</span>
+                    </a>
+
+                    <!-- Đăng nhập: rê chuột vào thì hiện ô, bấm vào thì mở popup #login -->
+                    <div class="login-wrap">
+                        <a href="#login" class="login-button">
+                            <i class="fa-regular fa-user"></i>
+                            <span>Đăng <br />Nhập</span>
+                        </a>
+                        <div class="login-hover-box">
+                            <p>Xin chào, vui lòng đăng nhập để nhận nhiều ưu đãi hơn</p>
+                            <a href="#login" class="hover-btn hover-btn-primary">Đăng nhập</a>
+                            <a href="#register" class="hover-btn hover-btn-outline">Đăng ký</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-bar">
+            <a href="#"><i class="fa-solid fa-screwdriver-wrench"></i> Xây Dựng Cấu Hình</a>
+            <a href="#"><i class="fa-solid fa-desktop"></i> PC Đồ Họa Tool</a>
+            <a href="#"><i class="fa-solid fa-tags"></i> Chương Trình Khuyến Mãi</a>
+            <a href="#"><i class="fa-regular fa-newspaper"></i> Tin Tức Công Nghệ</a>
+            <a href="#"><i class="fa-solid fa-shield-halved"></i> Bảo Hành Tận Nhà</a>
+            <a href="#"><i class="fa-regular fa-star"></i> Feedback</a>
+        </div>
+    </div>
+
+    <!-- ===================== NỘI DUNG TỪNG TRANG ===================== -->
+    <!-- Nội dung của view (Index.cshtml, CPU.cshtml...) sẽ được chèn vào đây -->
+    <main class="page-main">
+        @RenderBody()
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-cols">
+                <div>
+                    <h4>Đề Tài 07 - PC Builder</h4>
+                    <p>Trần Hồng Quân</p>
+                    <p>Lê Quang Bình</p>
+                    <p>Nguyễn Hữu Mạnh Phú</p>
+                </div>
+                <div>
+                    <h4>Mã Số Sinh Viên</h4>
+                    <p>25DH230134</p>
+                    <p>25DH230038</p>
+                    <p>25DH230065</p>
+                </div>
+                <div>
+                    <h4>Chính sách</h4>
+                    <p>Chính sách bảo hành</p>
+                    <p>Chính sách bảo mật</p>
+                    <p>Chính sách vận chuyển, giao nhận</p>
+                </div>
+            </div>
+
+            <div class="footer-email">
+                <h4>Email liên hệ</h4>
+                <div class="email-grid">
+                    <div class="email-card">
+                        <strong>Hợp tác truyền thông:</strong>
+                        <a href="mailto:media@example.vn">media@hoanghapc.vn</a>
+                    </div>
+                    <div class="email-card">
+                        <strong>Liên hệ báo giá:</strong>
+                        <a href="mailto:baogia@example.vn">kinhdoanh@hoanghapc.vn</a>
+                    </div>
+                    <div class="email-card">
+                        <strong>Hỗ trợ bảo hành:</strong>
+                        <a href="mailto:baohanh@example.vn">baohanh@hoanghapc.vn</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="legal">
+                    <b>Công ty TNHH DỊCH VỤ VÀ CÔNG NGHỆ HOÀNG HÀ</b><br>
+                    Giấy chứng nhận đăng ký kinh doanh số: 0123456789, do Sở Kế hoạch và Đầu tư cấp.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ===================== POPUP HOTLINE ===================== -->
+    <!-- Popup chỉ hiện khi địa chỉ trang có #hotline (dùng :target trong CSS) -->
+    <div id="hotline" class="popup">
+        <a href="#" class="popup-overlay"></a>
+
+        <div class="popup-box hotline-popup">
+            <div class="hotline-head">
+                <h3>Liên hệ hotline để nhận được tư vấn tốt nhất</h3>
+                <a href="#" class="popup-close white"><i class="fa-solid fa-xmark"></i></a>
+            </div>
+
+            <div class="hotline-content">
+                <!-- Cầu Giấy + Đống Đa -->
+                <div class="branch">
+                    <div class="branch-col">
+                        <h4>Hoàng Hà PC Cầu Giấy</h4>
+                        <ul class="phone-list">
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0969123666">0969.123.666</a> Mr. Bình</li>
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0922635999">0922.635.999</a> Mr. Quân</li>
+                        </ul>
+                        <h5>Bảo hành - Hỗ trợ kỹ thuật</h5>
+                        <ul class="phone-list">
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0976382666">0976.382.666</a> Mr. Phú</li>
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:19006100">19006100</a> Bảo hành</li>
+                        </ul>
+                    </div>
+                    <div class="branch-col">
+                        <h4>Hoàng Hà PC Đống Đa</h4>
+                        <ul class="phone-list">
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0396122999">0396.122.999</a> Mr. Nghĩa</li>
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0396138999">0396.138.999</a> Mr. Bảo</li>
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0396178999">0396.178.999</a> Mr. Nghiêm</li>
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0397122122">0397.122.122</a> Mr. Phát</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Miền Trung -->
+                <div class="branch">
+                    <div class="branch-col">
+                        <h4>Hoàng Hà PC Miền Trung</h4>
+                        <ul class="phone-list">
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0988163666">0988.163.666</a> Mr. Vũ</li>
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0356072072">0356.072.072</a> Mrs. Uyên</li>
+                        </ul>
+                    </div>
+                    <div class="branch-col">
+                        <h5>Bảo hành - Hỗ trợ kỹ thuật</h5>
+                        <ul class="phone-list">
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0358072072">0358.072.072</a> Mr. Toản</li>
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:19006100">19006100</a> Bảo hành</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Hồ Chí Minh -->
+                <div class="branch">
+                    <div class="branch-col">
+                        <h4>Hoàng Hà PC Hồ Chí Minh</h4>
+                        <ul class="phone-list">
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0968123666">0968.123.666</a> Mr. Bình</li>
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0379260260">0379.260.260</a> Mr. Khanh</li>
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0359072072">0359.072.072</a> Mr. Kiên</li>
+                        </ul>
+                    </div>
+                    <div class="branch-col">
+                        <h5>Bảo hành - Hỗ trợ kỹ thuật</h5>
+                        <ul class="phone-list">
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:0345260260">0345.260.260</a> Mr. Nhân</li>
+                            <li><i class="fa-solid fa-phone-volume"></i><a href="tel:19006100">19006100</a> Bảo hành</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===================== POPUP ĐĂNG NHẬP ===================== -->
+    <div id="login" class="popup">
+        <a href="#" class="popup-overlay"></a>
+
+        <div class="popup-box auth-popup">
+            <div class="auth-left">
+                <img src="~/Content/img/DangNhapPopup.png" alt="Mua sắm tại Hoàng Hà PC">
+            </div>
+
+            <div class="auth-right">
+                <a href="#" class="popup-close"><i class="fa-solid fa-xmark"></i></a>
+
+                <h2>Đăng nhập bằng Email</h2>
+                <p class="auth-sub"><a href="#register" class="auth-link">Đăng ký</a> nếu chưa có tài khoản.</p>
+
+                <form action="#">
+                    <div class="auth-field">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="auth-field">
+                        <input type="password" placeholder="Mật khẩu">
+                        <i class="fa-regular fa-eye auth-eye"></i>
+                    </div>
+                    <a href="#" class="auth-forgot">Quên mật khẩu ?</a>
+                    <button type="submit" class="auth-submit">Đăng nhập</button>
+                </form>
+
+                <p class="auth-or">- Hoặc đăng nhập bằng -</p>
+                <div class="auth-social">
+                    <a href="#" class="auth-google"><i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="auth-facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+                <p class="auth-terms">Bằng việc tiếp tục, bạn đã chấp nhận <a href="#">điều khoản sử dụng</a></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===================== POPUP ĐĂNG KÝ ===================== -->
+    <div id="register" class="popup">
+        <a href="#" class="popup-overlay"></a>
+
+        <div class="popup-box auth-popup">
+            <div class="auth-left">
+                <img src="~/Content/img/DangNhapPopup.png" alt="Mua sắm tại Hoàng Hà PC">
+            </div>
+
+            <div class="auth-right">
+                <!-- Nút quay lại: về popup đăng nhập -->
+                <a href="#login" class="auth-back"><i class="fa-solid fa-chevron-left"></i></a>
+
+                <h2>Tạo tài khoản</h2>
+                <p class="auth-sub">Vui lòng cho chúng tôi biết thông tin về bạn</p>
+
+                <form action="#">
+                    <div class="auth-field">
+                        <input type="text" placeholder="Tên bạn">
+                    </div>
+                    <div class="auth-field">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="auth-row">
+                        <div class="auth-field">
+                            <input type="password" placeholder="Mật khẩu">
+                            <i class="fa-regular fa-eye auth-eye"></i>
+                        </div>
+                        <div class="auth-field">
+                            <input type="password" placeholder="Nhập lại mật khẩu">
+                            <i class="fa-regular fa-eye auth-eye"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="auth-submit auth-register-submit">Tạo tài khoản</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

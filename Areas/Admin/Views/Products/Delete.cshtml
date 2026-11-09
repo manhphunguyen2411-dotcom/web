@@ -1,0 +1,21 @@
+﻿@model HoangHaPCVN.Models.Product
+
+@{
+    ViewBag.Title = "Xóa sản phẩm";
+}
+
+<h2 class="bg-danger text-white p-2">XÓA SẢN PHẨM</h2>
+
+<h5 class="alert alert-danger">Bạn thực sự muốn xóa sản phẩm này à?</h5>
+
+@Html.Partial("PVProductInfo", Model)
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+        @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+}

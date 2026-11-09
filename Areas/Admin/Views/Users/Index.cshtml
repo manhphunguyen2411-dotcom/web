@@ -1,0 +1,78 @@
+﻿@model HoangHaPCVN.Models.ViewModel.UserSearchVM
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Tài khoản Admin";
+}
+
+<h2 class="bg-success text-white p-2">QUẢN LÝ TÀI KHOẢN ADMIN</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+@* Form tìm kiếm *@
+@using (Html.BeginForm("Index", "Users", FormMethod.Get))
+{
+    <div class="row g-2 align-items-center mb-3">
+        <div class="col-md-5">
+            @Html.TextBoxFor(m => m.SearchTerm, new
+            {
+                @class = "form-control",
+                placeholder = "Nhập tên đăng nhập",
+                maxlength = 50
+            })
+        </div>
+        <div class="col-md-7">
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            @Html.ActionLink("Xóa lọc", "Index", null, new { @class = "btn btn-outline-secondary" })
+        </div>
+    </div>
+}
+
+@if (Model.Users.Any())
+{
+    <table class="table table-bordered align-middle">
+        <thead class="table-success">
+            <tr>
+                <th>Tên đăng nhập</th>
+                <th style="width: 150px">Vai trò</th>
+                <th style="width: 220px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var u in Model.Users)
+            {
+                <tr>
+                    <td>@u.Username</td>
+                    <td>@u.UserRole</td>
+                    <td>
+                        @Html.ActionLink("Đổi mật khẩu", "Edit", new { id = u.Username }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("Xóa", "Delete", new { id = u.Username }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>
+        Trang @Model.Users.PageNumber / @Model.Users.PageCount
+        (tổng @Model.Users.TotalItemCount tài khoản)
+    </p>
+
+    @Html.PagedListPager(Model.Users, page => Url.Action("Index", new
+    {
+        page,
+        searchTerm = Model.SearchTerm
+    }))
+}
+else
+{
+    <p class="alert alert-warning">Không tìm được tài khoản nào phù hợp.</p>
+}
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</p>
+

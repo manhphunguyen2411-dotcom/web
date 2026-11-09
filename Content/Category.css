@@ -1,0 +1,131 @@
+﻿/* khung chứa danh sách sản phẩm */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* chia làm 3 cột bằng nhau */
+    gap: 15px; /* khoảng cách giữa các thẻ */
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* thẻ sản phẩm */
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
+}
+
+    .product-card:hover {
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+/* phần hình ảnh */
+.product-image {
+    position: relative;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+    .product-image img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+/*  thông tin sản phẩm */
+.product-info {
+    flex-grow: 1;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d32f2f; /* màu đỏ cam */
+    margin-bottom: 8px;
+}
+
+.old-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+    margin-left: 8px;
+    font-weight: normal;
+}
+
+.product-title {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+
+
+
+
+.stock-status i {
+    margin-right: 5px;
+}
+
+.add-to-cart-btn {
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+    .add-to-cart-btn:hover {
+        background-color: #115293;
+    }
+/* =========================================
+DÒNG "SẴN HÀNG" + NÚT CỘNG (giống trang chủ)
+========================================= */
+.ps-foot {
+    display: flex; /* xếp chữ và nút trên cùng 1 hàng */
+    align-items: center; /* canh giữa theo chiều dọc */
+    justify-content: space-between; /* chữ bên trái, nút bên phải */
+    margin-top: auto; /* đẩy xuống đáy thẻ sản phẩm */
+    padding-top: 10px;
+}
+
+    .ps-foot form {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+
+    .ps-foot .ps-stock {
+        color: #16a34a; /* xanh lá */
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .ps-foot .ps-add {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border: none;
+        border-radius: 50%; /* hình tròn */
+        background: #1e6fd9; /* xanh dương */
+        color: #fff; /* dấu + màu trắng */
+        font-size: 20px;
+        line-height: 28px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+        .ps-foot .ps-add:hover {
+            background: #0b3d91; /* rê chuột: xanh đậm hơn */
+        }

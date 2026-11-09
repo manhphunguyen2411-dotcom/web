@@ -1,0 +1,28 @@
+﻿@model HoangHaPCVN.Models.User
+
+@{
+    ViewBag.Title = "Xóa tài khoản Admin";
+}
+
+<h2 class="bg-danger text-white p-2">XÓA TÀI KHOẢN ADMIN</h2>
+
+<h5 class="alert alert-danger">Bạn có chắc muốn xóa tài khoản "@Model.Username"?</h5>
+
+@* Hiện lỗi nếu đây là Admin cuối cùng *@
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<dl class="row bg-light border rounded p-3">
+    <dt class="col-sm-3">Tên đăng nhập</dt>
+    <dd class="col-sm-9">@Model.Username</dd>
+
+    <dt class="col-sm-3">Vai trò</dt>
+    <dd class="col-sm-9">@Model.UserRole</dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Xóa" class="btn btn-danger" />
+    @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary" })
+}
+

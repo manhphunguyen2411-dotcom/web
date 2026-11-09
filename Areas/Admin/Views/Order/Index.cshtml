@@ -1,0 +1,83 @@
+﻿@using HoangHaPCVN.Models.ViewModel
+@using PagedList.Mvc
+
+@model HoangHaPCVN.Models.ViewModel.OrderSearchVM
+
+@{
+    ViewBag.Title = "Đơn hàng";
+}
+
+<h2 class="bg-success text-white p-2">
+    QUẢN LÝ ĐƠN HÀNG
+    @if (Model.CustomerID.HasValue)
+    {
+        <small>– của khách @Model.CustomerName</small>
+    }
+</h2>
+
+@* Lọc theo trạng thái *@
+@using (Html.BeginForm("Index", "Orders", FormMethod.Get))
+{
+    @* Giữ lại bộ lọc khách hàng (nếu đang xem đơn của một khách) *@
+    @Html.HiddenFor(m => m.CustomerID)
+
+    <div class="row g-2 align-items-center mb-3">
+        <div class="col-md-4">
+            @Html.DropDownListFor(m => m.OrderStatus,
+                new SelectList(OrderStatuses.All),
+                "-- Tất cả trạng thái --",
+                new { @class = "form-select" })
+        </div>
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary">Lọc</button>
+            @Html.ActionLink("Xem tất cả đơn", "Index", null, new { @class = "btn btn-outline-secondary" })
+        </div>
+    </div>
+}
+
+@if (Model.Orders.Any())
+{
+    <table class="table table-bordered align-middle">
+        <thead class="table-success">
+            <tr>
+                <th>Mã đơn</th>
+                <th>Ngày đặt</th>
+                <th>Khách hàng</th>
+                <th>Tổng tiền</th>
+                <th>Thanh toán</th>
+                <th>Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var o in Model.Orders)
+            {
+                <tr>
+                    <td>#@o.OrderID</td>
+                    <td>@o.OrderDate.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@Html.ActionLink(o.Customer.CustomerName, "Details", "Customers", new { id = o.CustomerID }, null)</td>
+                    <td>@o.TotalAmount.ToString("N0") đ</td>
+                    <td>@o.PaymentMethod<br /><small class="text-muted">@o.PaymentStatus</small></td>
+                    <td>@(o.OrderStatus ?? "Chưa cập nhật")</td>
+                    <td>@Html.ActionLink("Chi tiết", "Details", new { id = o.OrderID }, new { @class = "btn btn-info btn-sm" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>
+        Trang @Model.Orders.PageNumber / @Model.Orders.PageCount
+        (tổng @Model.Orders.TotalItemCount đơn hàng)
+    </p>
+
+    @Html.PagedListPager(Model.Orders, page => Url.Action("Index", new
+    {
+        page,
+        customerId = Model.CustomerID,
+        orderStatus = Model.OrderStatus
+    }))
+}
+else
+{
+    <p class="alert alert-warning">Không có đơn hàng nào.</p>
+}

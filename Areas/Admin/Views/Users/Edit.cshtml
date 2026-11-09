@@ -1,0 +1,42 @@
+﻿@model HoangHaPCVN.Models.ViewModel.AdminUserVM
+
+@{
+    ViewBag.Title = "Đổi mật khẩu";
+}
+
+<h2 class="bg-success text-white p-2">ĐỔI MẬT KHẨU TÀI KHOẢN ADMIN</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @* Tên đăng nhập là khóa chính, không đổi được: chỉ hiện để xem, gửi đi bằng ô ẩn *@
+    @Html.HiddenFor(m => m.Username)
+
+    <div class="mb-3">
+        <label class="form-label fw-bold">Tên đăng nhập</label>
+        <input type="text" class="form-control" value="@Model.Username" disabled />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-bold">Mật khẩu mới</label>
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-bold">Nhập lại mật khẩu mới</label>
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <input type="submit" value="Lưu" class="btn btn-primary" />
+        @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
